@@ -1,0 +1,54 @@
+{% extends 'staff_templates/staff_base.html' %}
+{% block page_title %}
+Quản lý môn học
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+  
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-hover text-nowrap">
+                    <thead>
+                      <tr>
+                      <th>Mã lớp</th>
+                      <th>Tên lớp</th>
+                      <th>Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for class in classes %}
+                     <tr>
+                      <td>{{ class.malop }}</td>
+                      <td>{{ class.tenlop }}</td>
+                      <td>
+                        <a href="/staff_edit_class/{{ class.malop }}" class="btn btn-success">Sửa</a>
+                        <a href="/staff_delete_class/{{ class.malop }}" class="btn btn-success" style="background-color: rgb(176, 0, 0);">Xóa</a>
+                        </td>
+                     </tr>
+                     {% endfor%}
+                    </tbody>
+                </div>
+              </div>
+            </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

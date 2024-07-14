@@ -1,0 +1,68 @@
+{% extends 'admin_templates/admin_base.html'%}
+{% block page_title %}
+Quản lý nhân viên
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+  
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-hover text-nowrap">
+                    <thead>
+                      <tr>
+                      <th>Họ và tên</th>
+                      <th>Vị trí</th>
+                      <th>Ngày sinh</th>
+                      <th>Giới tính</th>
+                      <th>Địa chỉ</th>
+                      <th>CCCD</th>
+                      <th>Email</th>
+                      <th>Số điện thoại</th>
+                      <th>Ngày bắt đầu</th>
+                      <th>Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for staff in staffs %}
+                     <tr>
+                      <td>{{ staff.admin.hovaten }}</td>
+                      <td>{{ staff.vitri }}</td>
+                      <td>{{ staff.admin.ngaysinh }}</td>
+                      <td>{{ staff.admin.gioitinh }}</td>
+                      <td>{{ staff.admin.diachi }}</td>
+                      <td>{{ staff.admin.cccd }}</td>
+                      <td>{{ staff.admin.email }}</td>
+                      <td>{{ staff.admin.sdt }}</td>
+                      <td>{{ staff.admin.ngaybatdau }}</td>
+                      <td>
+                        <a href="/edit_staff/{{ staff.admin.mand }}" class="btn btn-success">Sửa</a>
+                        <a href="/delete_staff/{{ staff.admin.mand }}" class="btn btn-success" style="background-color: rgb(176, 0, 0);">Xóa</a>
+                        </td>
+                     </tr>
+                     {% endfor%}
+                    </tbody>
+                </div>
+              </div>
+            </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

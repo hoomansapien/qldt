@@ -1,0 +1,49 @@
+{% extends 'admin_templates/admin_base.html' %}
+{% block page_title %}
+Xóa nhân viên
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Xóa nhân viên</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/delete_staff_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input type="text" class="form-control" name="hovaten" placeholder="Ho va ten" value="{{ staffs.admin.hovaten }}" readonly>
+                        <input type="hidden"  name="mand" value="{{ staffs.admin.mand }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{ staffs.admin.email }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vị trí</label>
+                        <input type="text" class="form-control" name="vitri" placeholder="Vi tri" value="{{ staffs.vitri }}" readonly>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block" style="background-color: rgb(176, 0, 0);">Xóa nhân viên</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

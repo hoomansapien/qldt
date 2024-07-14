@@ -1,0 +1,39 @@
+{% extends 'admin_templates/admin_base.html' %}
+{% block page_title %}
+Xóa môn học
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Xóa môn học</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/delete_course_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Tên môn học</label>
+                        <input type="text" class="form-control" name="tenmonhoc" placeholder="Tên môn học" value="{{ courses.tenmonhoc }}" readonly>
+                        <input type="hidden"  name="mamonhoc" value="{{ courses.mamonhoc }}" readonly>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block" style="background-color: rgb(176, 0, 0);">Xóa môn học</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
